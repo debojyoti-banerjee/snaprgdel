@@ -8,7 +8,7 @@ class EmailService:
         self.email_password=email_password
         self.lead_email=lead_email
 
-    def send_email(self,snapshot_name,resource_group_name,vm_name):
+    def send_email(self,snapshot_name,vm_name):
         subject=f"Snapshot Deletion Alert {snapshot_name}"
         body=f"""
         Snapshot Name: {snapshot_name}
