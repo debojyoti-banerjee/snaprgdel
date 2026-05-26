@@ -22,6 +22,7 @@ jobs:
       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       LEAD_EMAIL: ${{ secrets.LEAD_EMAIL }}
       THRESHOLD_MINUTES: ${{ secrets.THRESHOLD_MINUTES }}
+      RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
 
     steps:
 

@@ -37,7 +37,7 @@ class SnapshotService:
                         deleted_snapshot.append({
                             "Snapshot Name": snapshot_name,
                             "Resource Group": resource_group,
-                            "VM Name": match_vm,
+                            "VM Name": match_vm.name,
                             "Created Time": str(creation_time)
                             "Deletion Time": str(current_time)
                         })
