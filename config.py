@@ -2,7 +2,7 @@ import os
 
 subscription_id=os.environ["SUBSCRIPTION_ID"]
 resource_group=os.environ["RESOURCE_GROUP"]
-threshold_minutes=os.environ["THRESHOLD_MINUTES"]
+threshold_minutes=int(os.environ["THRESHOLD_MINUTES"])
 connection_string=os.environ["AZURE_STORAGE_CONNECTION_STRING"]
 email_address=os.environ["EMAIL_ADDRESS"]
 email_password=os.environ["EMAIL_PASSWORD"]
