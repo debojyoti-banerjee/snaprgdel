@@ -4,33 +4,37 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 jobs:
+  cleanup_old_snapshot:
 
-  runs-on: ubuntu-latest
-  env:
-    SUBSCRIPTION_ID: {{ secrets.SUBSCRIPTION_ID }}
-    AZURE_CLIENT_ID: {{ secrets.AZURE_CLIENT_ID }}
-    AZURE_TENANT_ID: {{ secrets.AZURE_TENANT_ID }}
-    AZURE_STORAGE_CONNECTION_STRING: {{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-    EMAIL_ADDRESS: {{ secrets.EMAIL_ADDRESS }}
-    EMAIL_PASSWORD: {{ secrets.EMAIL_PASSWORD }}
-    LEAD_EMAIL: {{ secrets.LEAD_EMAIL }}
-    THRESHOLD_MINUTES: {{ secrets.THRESHOLD_MINUTES }}
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout Code
-      uses: actions/Checkout@v4
+    env:
+      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      LEAD_EMAIL: ${{ secrets.LEAD_EMAIL }}
+      THRESHOLD_MINUTES: ${{ secrets.THRESHOLD_MINUTES }}
 
-    - name: Install Python
-      uses: actions/setup-python@v5
-      with:
-        python_version: "3.13"
+    steps:
 
-    - name: Install packages
-      run: pip install -r requirements.txt
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Snapshot Cleaning
-      run: python main.py
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
 
+      - name: Install Packages
+        run: pip install -r requirements.txt
+
+      - name: Run Snapshot Cleanup
+        run: python main.py
