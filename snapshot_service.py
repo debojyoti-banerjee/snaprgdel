@@ -13,7 +13,7 @@ class SnapshotService:
         deleted_snapshot=[]
         snapshots=self.compute_client.snapshots.list_by_resource_group(resource_group)
         for snapshot in snapshots:
-            snapshot_name=snapshot.Name
+            snapshot_name=snapshot.name
             creation_time=snapshot.time_created
             age_minutes=(current_time-creation_time).total_second()/60
             snapshot_disk=snapshot.creation_data.source_resource_id
