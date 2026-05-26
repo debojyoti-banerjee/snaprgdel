@@ -20,15 +20,15 @@ class SnapshotService:
             match_vm=None
             for vm in virtual_machines:
                 if (vm.storage_profile.os_disk and vm.storage_profile.os_disk.managed_disk):
-                    vm_disk=vm.storage_profile.os_disk.managed_disk
-                    if vm_disk==snapshot_disk:
+                    vm_disk=vm.storage_profile.os_disk.managed_disk.id
+                    if vm_disk == snapshot_disk:
                         match_vm=vm
                         break
             if match_vm:
                 tags=match_vm.tags
                 if tags:
                     delete_snapshot=tags.get("delete_snapshot")
-                    if (delete_snapshot==true and age_minutes > threshold_minutes):
+                    if (delete_snapshot=="true" and age_minutes > threshold_minutes):
                         delete_operation=self.compute_client.snapshots.begin_delete(
                             resource_group,snapshot_name
                         )
