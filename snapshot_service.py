@@ -15,7 +15,7 @@ class SnapshotService:
         for snapshot in snapshots:
             snapshot_name=snapshot.name
             creation_time=snapshot.time_created
-            age_minutes=(current_time-creation_time).total_second()/60
+            age_minutes=(current_time-creation_time).total_seconds()/60
             snapshot_disk=snapshot.creation_data.source_resource_id
             match_vm=None
             for vm in virtual_machines:
