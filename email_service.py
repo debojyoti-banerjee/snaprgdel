@@ -1,6 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime,timezone
+from config import *
 
 class EmailService:
     def __init__(self,email_address,email_password,lead_email):
