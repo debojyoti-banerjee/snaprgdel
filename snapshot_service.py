@@ -38,7 +38,7 @@ class SnapshotService:
                             "Snapshot Name": snapshot_name,
                             "Resource Group": resource_group,
                             "VM Name": match_vm.name,
-                            "Created Time": str(creation_time)
+                            "Created Time": str(creation_time),
                             "Deletion Time": str(current_time)
                         })
                         email_obj.send_email(snapshot_name,resource_group,match_vm.name)
