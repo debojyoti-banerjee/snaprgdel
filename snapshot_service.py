@@ -41,7 +41,7 @@ class SnapshotService:
                             "Created Time": str(creation_time),
                             "Deletion Time": str(current_time)
                         })
-                        email_obj.send_email(snapshot_name,resource_group,match_vm.name)
+                        email_obj.send_email(snapshot_name,match_vm.name)
 
         return deleted_snapshot
 
